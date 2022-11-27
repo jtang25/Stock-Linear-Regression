@@ -33,6 +33,5 @@ def linregstock(df, startdate, enddate):
     y_predict = regression_model.predict(e)
 
     plt.plot(r, y_predict, color='royalblue', linewidth = 3, linestyle= '-',label ='Regression Line')
-    print(regression_model.coef_[0][0])
     mplcyberpunk.make_lines_glow()
     mplcyberpunk.add_gradient_fill(alpha_gradientglow=0.5)
