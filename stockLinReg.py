@@ -1,20 +1,9 @@
 import pandas as pd
-import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
-import mplcyberpunk
 
-df= pd.read_csv(r"C:\Users\Jason_yj4bjfp\IdeaProjects\Stock-Linear-Regression\SOXL.csv")
 
 def linregstock(df, start_date, end_date):
-    plt.figure(figsize=(20, 7), dpi=80)
-    plt.style.use('cyberpunk')
-
-    plt.plot(df['Date'],df['Close'])
-    font2 = {'size':20}
-    plt.xlabel('Date', fontdict = font2)
-    plt.ylabel('Price', fontdict = font2)
-
     r = df['Date'].tolist()
     df = df.drop(['Open','High','Low','Adj Close','Volume'], axis = 1)
     datelist = pd.date_range(start=start_date,end=end_date).tolist()
@@ -33,9 +22,4 @@ def linregstock(df, start_date, end_date):
     regression_model = LinearRegression()
     regression_model.fit(X_train, y_train)
     y_predict = regression_model.predict(e)
-
-    plt.plot(e, y_predict, color='royalblue', linewidth = 3, linestyle= '-',label ='Regression Line')
-    plt.show()
-    return regression_model
-
-print(linregstock(df, "2022-11-29", "2023-02-17"))
+    return y_predict
